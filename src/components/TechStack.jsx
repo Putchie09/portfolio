@@ -1,17 +1,29 @@
+import htmlIcon from "../assets/techstack/html.svg";
+import cssIcon from "../assets/techstack/css3.svg";
+import jsIcon from "../assets/techstack/javascript.svg";
+import reactIcon from "../assets/techstack/react.svg";
+import pythonIcon from "../assets/techstack/python.svg";
+import djangoIcon from "../assets/techstack/django.svg";
+import nodeIcon from "../assets/techstack/nodejs.svg";
+import javaIcon from "../assets/techstack/java.svg";
+import sqlServerIcon from "../assets/techstack/sqlserver.svg";
+import mysqlIcon from "../assets/techstack/mysql.svg";
+import dockerIcon from "../assets/techstack/docker.svg";
+import gitIcon from "../assets/techstack/git.svg";
 
 const TECH_STACK = [
-  { label: "HTML", icon: "/src/assets/techstack/html.svg" },
-  { label: "CSS3", icon: "/src/assets/techstack/css3.svg" },
-  { label: "JavaScript", icon: "/src/assets/techstack/javascript.svg" },
-  { label: "React", icon: "/src/assets/techstack/react.svg" },
-  { label: "Python", icon: "/src/assets/techstack/python.svg" },
-  { label: "Django", icon: "/src/assets/techstack/django.svg" },
-  { label: "Nodejs", icon: "/src/assets/techstack/nodejs.svg" },
-  { label: "Java", icon: "/src/assets/techstack/java.svg" },
-  { label: "SQL Server", icon: "/src/assets/techstack/sqlserver.svg" },
-  { label: "MySql", icon: "/src/assets/techstack/mysql.svg" },
-  { label: "Docker", icon: "/src/assets/techstack/docker.svg" },
-  { label: "Git", icon: "/src/assets/techstack/git.svg" },
+  { label: "HTML", icon: htmlIcon },
+  { label: "CSS3", icon: cssIcon },
+  { label: "JavaScript", icon: jsIcon },
+  { label: "React", icon: reactIcon },
+  { label: "Python", icon: pythonIcon },
+  { label: "Django", icon: djangoIcon },
+  { label: "Nodejs", icon: nodeIcon },
+  { label: "Java", icon: javaIcon },
+  { label: "SQL Server", icon: sqlServerIcon },
+  { label: "MySql", icon: mysqlIcon },
+  { label: "Docker", icon: dockerIcon },
+  { label: "Git", icon: gitIcon },
 ];
 
 function TechCard({ label, icon }) {
