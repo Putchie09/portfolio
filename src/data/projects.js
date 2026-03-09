@@ -7,14 +7,6 @@ import mazeImg from "../assets/projects/maze-game.png";
 export const projects = [
   {
     id: 1,
-    title: "Employee Attendance System",
-    description: "System to manage check-in-out of employees.",
-    technologies: ["React", "Tailwind", "NodeJs", "MySql"],
-    image: attendanceImg,
-    github: "https://github.com/Putchie09",
-  },
-  {
-    id: 2,
     title: "Time Tracking Dashboard",
     description: "System to manage hours worked in a project.",
     technologies: ["Django", "MySql", "CSS"],
@@ -22,7 +14,7 @@ export const projects = [
     github: "https://github.com/Putchie09/Time_Tracking_Dashboard",
   },
   {
-    id: 3,
+    id: 2,
     title: "Point of Sale & inventory management",
     description: "Point of sale system for a generic technology company.",
     technologies: ["Django", "MySql", "CSS"],
@@ -30,7 +22,7 @@ export const projects = [
     github: "https://github.com/Putchie09/POS_System",
   },
   {
-    id: 4,
+    id: 3,
     title: "Space Invaders",
     description:
       "Replica of the Space Invaders video game with data persistence.",
@@ -39,7 +31,7 @@ export const projects = [
     github: "https://github.com/Putchie09/Space_Invaders_Replica",
   },
   {
-    id: 5,
+    id: 4,
     title: "Maze Solver",
     description: "Maze solver using DFS and BFS algorithms.",
     technologies: ["Java", "JSON", "Swing"],
