@@ -3,8 +3,19 @@ import dashboardImg from "../assets/projects/time-dashboard.png";
 import posImg from "../assets/projects/pos-system.png";
 import spaceInvadersImg from "../assets/projects/space-invaders.png";
 import mazeImg from "../assets/projects/maze-game.png";
+import supplierPortalImg from "../assets/projects/supplier-portal.png";
 
 export const projects = [
+  {
+    id: 5,
+    title: "Supplier Portal – Compre Bien Supermercados",
+    description:
+      "Supplier management portal for a Costa Rican retail chain: contracts, purchase orders, meetings and profile change requests.",
+    technologies: ["Nestjs", ".Net", "Blazor", "Sql server"],
+    image: supplierPortalImg,
+    github: null,
+    isPrivate: true,
+  },
   {
     id: 1,
     title: "Time Tracking Dashboard",

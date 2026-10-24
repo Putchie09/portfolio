@@ -10,6 +10,8 @@ import sqlServerIcon from "../assets/techstack/sqlserver.svg";
 import mysqlIcon from "../assets/techstack/mysql.svg";
 import dockerIcon from "../assets/techstack/docker.svg";
 import gitIcon from "../assets/techstack/git.svg";
+import Reveal from "./Reveal";
+import SectionTitle from "./SectionTitle";
 
 const TECH_STACK = [
   { label: "HTML", icon: htmlIcon },
@@ -21,29 +23,20 @@ const TECH_STACK = [
   { label: "Nodejs", icon: nodeIcon },
   { label: "Java", icon: javaIcon },
   { label: "SQL Server", icon: sqlServerIcon },
-  { label: "MySql", icon: mysqlIcon },
+  { label: "MySql", icon: mysqlIcon, lift: true },
   { label: "Docker", icon: dockerIcon },
   { label: "Git", icon: gitIcon },
 ];
 
-function TechCard({ label, icon }) {
+function TechCard({ label, icon, lift }) {
   return (
-    <div
-      className="
-        flex flex-col items-center justify-center gap-4
-        bg-[#404560] border border-[#575E83]
-        rounded-lg
-        transition-colors duration-200
-        hover:border-[#CFD6FF]
-        w-full aspect-[183/158]
-      "
-    >
+    <div className="group flex flex-col items-center justify-center gap-4 rounded-xl bg-surface border border-card-border w-full aspect-square sm:aspect-[183/158] transition-colors duration-200 hover:bg-surface-hover hover:border-accent/60">
       <img
         src={icon}
-        alt={label}
-        className="w-[32px] h-[32px] sm:w-[44px] sm:h-[44px] lg:w-[64px] lg:h-[64px] object-contain"
+        alt=""
+        className={`w-[32px] h-[32px] sm:w-[40px] sm:h-[40px] lg:w-[44px] lg:h-[44px] object-contain ${lift ? "brightness-[2.2] saturate-150" : ""}`}
       />
-      <span className="font-medium text-[#F8F8F8] text-[13px] sm:text-[15px] lg:text-[18px]">
+      <span className="font-medium text-text-secondary text-[14px]">
         {label}
       </span>
     </div>
@@ -54,31 +47,23 @@ function TechStack() {
   return (
     <section
       id="techstack"
-      className="bg-background pt-12 pb-40 sm:py-40"
+      className="py-20 scroll-mt-16"
       aria-label="Tech Stack section"
     >
-      <div className="mx-auto w-full max-w-[1232px] px-[30px]">
-        {/* Title */}
-        <div className="flex flex-col items-center mb-24">
-          <h2 className="font-extrabold text-center text-[40px] sm:text-[56px] lg:text-[72px] leading-tight">
-            <span className="text-white">Tech </span>
-            <span className="text-accent">Stack.</span>
-          </h2>
-          <span
-            className="block bg-accent rounded-full mt-3"
-            style={{ width: "260px", height: "4px" }}
-          />
-        </div>
+      <div className="mx-auto w-full max-w-container px-6">
+        <Reveal className="mb-10">
+          <SectionTitle icon="layers">
+            Tech Stack
+          </SectionTitle>
+        </Reveal>
 
-        {/* Grid */}
-        <div
-          className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6"
-          style={{ gap: "21px 21px", rowGap: "29px" }}
-        >
-          {TECH_STACK.map((tech) => (
-            <TechCard key={tech.label} {...tech} />
+        <ul className="grid grid-cols-2 min-[480px]:grid-cols-4 gap-3 sm:gap-4">
+          {TECH_STACK.map((tech, i) => (
+            <Reveal as="li" key={tech.label} delay={(i % 6) * 50}>
+              <TechCard {...tech} />
+            </Reveal>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

@@ -74,7 +74,7 @@ function CustomScrollbar() {
           height: `${thumbHeight}px`,
           width: "7px",
           left: "1px",
-          backgroundColor: "#6b44cc",
+          backgroundColor: "rgba(182, 193, 252, 0.55)",
           borderRadius: "999px",
         }}
       />

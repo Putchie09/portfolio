@@ -11,10 +11,10 @@
     padding: 0;
   }
 
-
   html {
     scroll-behavior: smooth;
     scrollbar-width: none;
+    color-scheme: dark;
   }
 
   ::-webkit-scrollbar {
@@ -23,19 +23,74 @@
   }
 
   body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #34384f;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    background-color: #1e212b;
     color: #ffffff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-y: scroll;
   }
 
-  /* glow pulse effect for linkedin button*/
-  @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 10px rgba(155, 107, 255, 0.3); }
-  50%       { box-shadow: 0 0 22px rgba(155, 107, 255, 0.65); }
+  :focus-visible {
+    outline: 2px solid #b6c1fc;
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::selection {
+    background: rgba(182, 193, 252, 0.35);
+    color: #fff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
 }
+
+@layer components {
+  .section-title {
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: #ffffff;
+  }
+
+  .btn-accent {
+    background: #8b9dfa;
+    color: #10153a;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .btn-accent:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 4px rgba(139, 157, 250, 0.28);
+  }
+
+  .btn-secondary {
+    background: #262a36;
+    color: #ffffff;
+    border: 1px solid #343949;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  .btn-secondary:hover { background: #2e3341; border-color: rgba(182, 193, 252, 0.6); }
+
+  /* case study dialog */
+  .case-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+  .case-dialog[open] {
+    animation: dialog-in 0.25s ease;
+  }
+  @keyframes dialog-in {
+    from { opacity: 0; transform: translateY(12px) scale(0.985); }
+    to   { opacity: 1; transform: none; }
+  }
 }
 
 @layer utilities {
@@ -45,5 +100,24 @@
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 }

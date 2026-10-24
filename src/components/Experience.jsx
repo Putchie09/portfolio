@@ -47,7 +47,7 @@ function Experience() {
       <div className="mx-auto w-full max-w-container px-6">
         <Reveal className="mb-10">
           <SectionTitle icon="briefcase">
-            Experience<span className="text-accent-light">.</span>
+            Experience
           </SectionTitle>
         </Reveal>
 

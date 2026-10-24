@@ -5,78 +5,56 @@ function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center bg-background"
+      className="pt-36 pb-14"
       aria-label="Hero section"
     >
-      <div className="text-center px-6 max-w-screen-lg mx-auto">
-        {/* Badge */}
-        <span
-          className="
-            inline-block mb-6
-            bg-accent/25 text-accent
-            text-[16px] font-bold tracking-[0.14em] uppercase
-            px-4 py-1.5 rounded-md
-          "
-        >
-          Software Developer
-        </span>
-
-        {/*Heading */}
-        <h1 className="font-bold leading-none tracking-tight mb-6 text-white text-[56px] sm:text-[80px] md:text-[110px] lg:text-[144px]">
-          <span className="text-white">Yoel </span>
-          <span className="text-accent">Putchie</span>
-        </h1>
-
-        {/* Tagline*/}
-        <p className="font-normal text-text-secondary/80 mb-12 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[24px]">
-          Focused on building reliable software.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className="flex items-center justify-center gap-5 flex-wrap">
-          {/* LinkedIn */}
-          <a
-            href={LINKEDIN_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              inline-flex items-center justify-center
-              rounded-lg border-2 border-[#575E83]
-              text-[15px] font-bold text-white
-              hover:bg-accent/20
-              transition-colors duration-200
-              select-none
-            "
-            style={{
-              width: "196px",
-              height: "54px",
-              animation: "glow-pulse 2.5s ease-in-out infinite",
-            }}
+      <div className="mx-auto w-full max-w-container px-6">
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-8">
+          {/* Avatar (initials; swap for a photo if you like) */}
+          <div
+            aria-hidden="true"
+            className="flex h-28 w-28 shrink-0 items-center justify-center rounded-full bg-accent text-[#10153a] text-[40px] font-extrabold tracking-tight ring-[6px] ring-surface sm:h-36 sm:w-36 sm:text-[48px]"
           >
-            LinkedIn
-          </a>
+            YP
+          </div>
 
-          {/* GitHub */}
-          <a
-            href={GITHUB_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              inline-flex items-center justify-center
-              rounded-lg border border-white/70
-              text-[15px] font-bold text-white
-              hover:border-white hover:bg-white/10
-              transition-colors duration-200
-              select-none
-            "
-            style={{
-              width: "196px",
-              height: "54px",
-            }}
-          >
-            GitHub
-          </a>
+          <div className="flex flex-col items-start">
+            {/* Name */}
+            <h1 className="mb-3 text-[40px] font-bold leading-[1.05] tracking-[-0.03em] text-text-primary sm:text-[52px]">
+              Yoel Putchie
+            </h1>
+
+            {/* Tagline */}
+            <p className="mb-7 max-w-xl text-[18px] leading-relaxed text-muted sm:text-[21px]">
+              Focused on building reliable software.
+            </p>
+
+            {/* Buttons */}
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn (opens in a new tab)"
+                className="btn-accent inline-flex h-12 select-none items-center justify-center rounded-full px-8 text-[15px] font-semibold"
+              >
+                LinkedIn
+              </a>
+
+              <a
+                href={GITHUB_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub (opens in a new tab)"
+                className="btn-secondary inline-flex h-12 select-none items-center justify-center rounded-full px-8 text-[15px] font-semibold"
+              >
+                GitHub
+              </a>
+            </div>
+          </div>
         </div>
+
+        <hr className="mt-14 border-0 border-t border-card-border" />
       </div>
     </section>
   );

@@ -7,19 +7,22 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       },
       colors: {
-        background: '#34384f',
-        accent: '#9b6bff',
-        'text-primary': '#ffffff',
-        'text-secondary': '#F8F8F8',
-        'card-bg': '#404560',
-        'card-border': '#575E83',
-        'navbar-scrolled': 'rgba(40, 43, 62, 0.85)',
+        background: '#1e212b',
+        surface: '#262a36',
+        'surface-hover': '#2e3341',
+        accent: '#8b9dfa',
+        'accent-light': '#b6c1fc',
+        'text-primary': '#ecedf1',
+        'text-secondary': '#d5d8e1',
+        muted: '#9ca1b3',
+        'card-border': '#343949',
+        'field-border': '#474d61',
       },
       maxWidth: {
-        container: '1232px',
+        container: '800px',
       },
     },
   },
