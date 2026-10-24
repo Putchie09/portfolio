@@ -1,26 +1,24 @@
 import { useEffect, useRef, useState } from "react";
 
+// Replaces the hidden native scrollbar (see index.css) with a themed,
+// draggable thumb.
+const MIN_THUMB_HEIGHT = 40;
+
+function getThumbGeometry() {
+  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+  const height = Math.max((clientHeight / scrollHeight) * clientHeight, MIN_THUMB_HEIGHT);
+  const scrollable = scrollHeight - clientHeight;
+  // Short pages can't scroll; avoid dividing by zero.
+  const top = scrollable > 0 ? (scrollTop / scrollable) * (clientHeight - height) : 0;
+  return { height, top };
+}
+
 function CustomScrollbar() {
-  const thumbRef = useRef(null);
-  const [thumbHeight, setThumbHeight] = useState(40);
-  const [thumbTop, setThumbTop] = useState(0);
-  const isDragging = useRef(false);
-  const dragStartY = useRef(0);
-  const dragStartScroll = useRef(0);
+  const [thumb, setThumb] = useState({ height: MIN_THUMB_HEIGHT, top: 0 });
+  const drag = useRef({ active: false, startY: 0, startScroll: 0 });
 
   useEffect(() => {
-    function update() {
-      const { scrollTop, scrollHeight, clientHeight } =
-        document.documentElement;
-      const ratio = clientHeight / scrollHeight;
-      const newThumbHeight = Math.max(ratio * clientHeight, 40);
-      const maxThumbTop = clientHeight - newThumbHeight;
-      const newThumbTop =
-        (scrollTop / (scrollHeight - clientHeight)) * maxThumbTop;
-      setThumbHeight(newThumbHeight);
-      setThumbTop(newThumbTop);
-    }
-
+    const update = () => setThumb(getThumbGeometry());
     update();
     window.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
@@ -30,26 +28,19 @@ function CustomScrollbar() {
     };
   }, []);
 
-  function onMouseDown(e) {
-    isDragging.current = true;
-    dragStartY.current = e.clientY;
-    dragStartScroll.current = document.documentElement.scrollTop;
-    e.preventDefault();
-  }
-
   useEffect(() => {
-    function onMouseMove(e) {
-      if (!isDragging.current) return;
+    function onMouseMove(event) {
+      if (!drag.current.active) return;
       const { scrollHeight, clientHeight } = document.documentElement;
-      const maxThumbTop = clientHeight - thumbHeight;
-      const deltaY = e.clientY - dragStartY.current;
-      const scrollRatio = deltaY / maxThumbTop;
+      const trackSpace = clientHeight - thumb.height;
+      if (trackSpace <= 0) return;
+      const scrollRatio = (event.clientY - drag.current.startY) / trackSpace;
       document.documentElement.scrollTop =
-        dragStartScroll.current + scrollRatio * (scrollHeight - clientHeight);
+        drag.current.startScroll + scrollRatio * (scrollHeight - clientHeight);
     }
 
     function onMouseUp() {
-      isDragging.current = false;
+      drag.current.active = false;
     }
 
     window.addEventListener("mousemove", onMouseMove);
@@ -58,25 +49,23 @@ function CustomScrollbar() {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseup", onMouseUp);
     };
-  }, [thumbHeight]);
+  }, [thumb.height]);
+
+  function onMouseDown(event) {
+    drag.current = {
+      active: true,
+      startY: event.clientY,
+      startScroll: document.documentElement.scrollTop,
+    };
+    event.preventDefault();
+  }
 
   return (
-    <div
-      className="fixed top-0 right-0 z-[9999] pointer-events-none"
-      style={{ width: "8px", height: "100vh" }}
-    >
+    <div className="fixed top-0 right-0 z-[9999] pointer-events-none w-2 h-screen">
       <div
-        ref={thumbRef}
         onMouseDown={onMouseDown}
-        className="absolute pointer-events-auto cursor-grab active:cursor-grabbing"
-        style={{
-          top: `${thumbTop}px`,
-          height: `${thumbHeight}px`,
-          width: "7px",
-          left: "1px",
-          backgroundColor: "rgba(182, 193, 252, 0.55)",
-          borderRadius: "999px",
-        }}
+        className="absolute left-px w-[7px] rounded-full bg-accent-light/55 pointer-events-auto cursor-grab active:cursor-grabbing"
+        style={{ top: `${thumb.top}px`, height: `${thumb.height}px` }}
       />
     </div>
   );

@@ -11,6 +11,7 @@
     padding: 0;
   }
 
+  /* The native scrollbar is hidden; CustomScrollbar draws a themed one. */
   html {
     scroll-behavior: smooth;
     scrollbar-width: none;
@@ -24,7 +25,7 @@
 
   body {
     font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
-    background-color: #1e212b;
+    background-color: theme('colors.background');
     color: #ffffff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -32,13 +33,13 @@
   }
 
   :focus-visible {
-    outline: 2px solid #b6c1fc;
+    outline: 2px solid theme('colors.accent-light');
     outline-offset: 3px;
     border-radius: 6px;
   }
 
   ::selection {
-    background: rgba(182, 193, 252, 0.35);
+    background: theme('colors.accent-light / 35%');
     color: #fff;
   }
 
@@ -53,32 +54,28 @@
 }
 
 @layer components {
-  .section-title {
-    font-weight: 700;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
-    color: #ffffff;
-  }
-
   .btn-accent {
-    background: #8b9dfa;
-    color: #10153a;
+    background: theme('colors.accent');
+    color: theme('colors.accent-ink');
     transition: box-shadow 0.2s ease, transform 0.2s ease;
   }
   .btn-accent:hover {
     transform: translateY(-1px);
-    box-shadow: 0 0 0 4px rgba(139, 157, 250, 0.28);
+    box-shadow: 0 0 0 4px theme('colors.accent / 28%');
   }
 
   .btn-secondary {
-    background: #262a36;
+    background: theme('colors.surface');
     color: #ffffff;
-    border: 1px solid #343949;
+    border: 1px solid theme('colors.card-border');
     transition: background 0.2s ease, border-color 0.2s ease;
   }
-  .btn-secondary:hover { background: #2e3341; border-color: rgba(182, 193, 252, 0.6); }
+  .btn-secondary:hover {
+    background: theme('colors.surface-hover');
+    border-color: theme('colors.accent-light / 60%');
+  }
 
-  /* case study dialog */
+  /* project case study modal */
   .case-dialog::backdrop {
     background: rgba(0, 0, 0, 0.72);
     backdrop-filter: blur(4px);
@@ -94,15 +91,7 @@
 }
 
 @layer utilities {
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  /* scroll reveal */
+  /* scroll reveal, toggled by the Reveal component */
   .reveal {
     opacity: 0;
     transform: translateY(14px);

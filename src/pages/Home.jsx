@@ -1,10 +1,9 @@
-import Hero      from '../components/Hero'
-import About     from '../components/About'
-import Experience from '../components/Experience'
-import Projects  from '../components/Projects'
-import TechStack from '../components/TechStack'
-import Contact   from '../components/Contact'
-
+import Hero from "../sections/Hero";
+import About from "../sections/About";
+import Experience from "../sections/Experience";
+import Projects from "../sections/Projects";
+import TechStack from "../sections/TechStack";
+import Contact from "../sections/Contact";
 
 function Home() {
   return (
@@ -16,7 +15,7 @@ function Home() {
       <TechStack />
       <Contact />
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;

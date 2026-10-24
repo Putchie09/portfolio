@@ -1,12 +1,15 @@
-import MainLayout from './layout/MainLayout'
-import Home from './pages/Home'
+import { LanguageProvider } from "./i18n/LanguageContext";
+import MainLayout from "./layout/MainLayout";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <MainLayout>
-      <Home />
-    </MainLayout>
-  )
+    <LanguageProvider>
+      <MainLayout>
+        <Home />
+      </MainLayout>
+    </LanguageProvider>
+  );
 }
 
-export default App
+export default App;
