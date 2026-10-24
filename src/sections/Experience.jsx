@@ -14,7 +14,7 @@ function formatMonth(isoMonth, language) {
   return label.charAt(0).toUpperCase() + label.slice(1);
 }
 
-function ExperienceItem({ role, company, period, highlights }) {
+function ExperienceItem({ role, company, period, description }) {
   return (
     <article className="flex flex-col gap-6 rounded-xl border border-card-border bg-surface p-6 sm:p-8">
       <header className="flex flex-col gap-1.5">
@@ -25,13 +25,9 @@ function ExperienceItem({ role, company, period, highlights }) {
         <p className="text-[15px] text-muted">{period}</p>
       </header>
 
-      <ul className="flex list-disc flex-col gap-3 pl-5 text-[16px] leading-relaxed text-text-secondary marker:text-accent-light">
-        {highlights.map((highlight) => (
-          <li key={highlight} className="pl-1">
-            {highlight}
-          </li>
-        ))}
-      </ul>
+      <p className="text-[16px] leading-relaxed text-text-secondary">
+        {description}
+      </p>
     </article>
   );
 }
@@ -53,7 +49,7 @@ function Experience() {
               role={localize(job.role)}
               company={job.company}
               period={formatPeriod(job)}
-              highlights={localize(job.highlights)}
+              description={localize(job.description)}
             />
           </Reveal>
         ))}
