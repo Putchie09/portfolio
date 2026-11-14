@@ -30,7 +30,8 @@ function About() {
   const { t, localize } = useLanguage();
 
   return (
-    <Section id="about" icon="user" title={t("about.title")}>
+    // Less top padding than other sections, so About sits a bit closer to the hero.
+    <Section id="about" icon="user" title={t("about.title")} spacingClassName="pt-8 pb-20">
       <div className="flex flex-col gap-10">
         <Reveal className="flex flex-col gap-5">
           <p className="font-medium text-text-primary text-[18px] sm:text-[20px] leading-relaxed">

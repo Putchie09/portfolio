@@ -1,5 +1,6 @@
 import { useLanguage } from "../i18n/LanguageContext";
 import { profile } from "../data/profile";
+import pfp from "../assets/pfp.webp";
 
 const LINK_CLASSES =
   "inline-flex h-12 select-none items-center justify-center rounded-full px-8 text-[15px] font-semibold";
@@ -16,13 +17,15 @@ function Hero() {
     <section id="hero" aria-labelledby="hero-title" className="pt-36 pb-14">
       <div className="mx-auto w-full max-w-container px-6">
         <div className="flex flex-col gap-8 sm:flex-row sm:items-center sm:gap-8">
-          {/* Initials avatar; replace with an <img> to use a photo. */}
-          <div
-            aria-hidden="true"
-            className="flex h-28 w-28 shrink-0 items-center justify-center rounded-full bg-accent text-accent-ink text-[40px] font-extrabold tracking-tight ring-[6px] ring-surface sm:h-36 sm:w-36 sm:text-[48px]"
-          >
-            {profile.initials}
-          </div>
+          <img
+            src={pfp}
+            alt={profile.name}
+            width={176}
+            height={176}
+            // sm:h-44 (176px) matches the height of name + tagline + buttons
+            // on desktop, where the tagline fits on one line.
+            className="h-32 w-32 shrink-0 rounded-full bg-surface object-cover ring-[6px] ring-surface sm:h-44 sm:w-44"
+          />
 
           <div className="flex flex-col items-start">
             <h1

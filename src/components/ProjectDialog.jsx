@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { useLanguage } from "../i18n/LanguageContext";
 import { CloseIcon, LockIcon } from "./icons";
 import GitHubButton from "./GitHubButton";
+import ImageGallery from "./ImageGallery";
 import TechList from "./TechList";
 
 // Case study modal built on the native <dialog>, which provides focus
@@ -49,13 +50,7 @@ function ProjectDialog({ project, onClose }) {
         </button>
       </div>
 
-      <div className="relative aspect-[16/9] w-full bg-background">
-        <img
-          src={project.image}
-          alt={t("projects.screenshotAlt", { title })}
-          className="absolute inset-0 h-full w-full object-cover object-top"
-        />
-      </div>
+      <ImageGallery images={project.images ?? [project.image]} title={title} />
 
       <div className="flex flex-col gap-8 p-6 sm:p-10">
         <div className="flex flex-col gap-4">

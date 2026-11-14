@@ -3,6 +3,8 @@ import dashboardImg from "../assets/projects/time-dashboard.webp";
 import posImg from "../assets/projects/pos-system.webp";
 import spaceInvadersImg from "../assets/projects/space-invaders.webp";
 import mazeImg from "../assets/projects/maze-game.webp";
+import crimeHomeImg from "../assets/projects/crime-forecasting-home.png";
+import crimeForecastImg from "../assets/projects/crime-forecasting-forecast.png";
 
 // Projects in display order; the first one is shown as the wide featured card.
 //
@@ -11,7 +13,9 @@ import mazeImg from "../assets/projects/maze-game.webp";
 //   title        { en, es }
 //   description  { en, es }
 //   technologies string[]      (names are not translated)
-//   image        imported image
+//   image        imported image (cover shown on the card)
+//   images       optional imported images[]; when present the case study
+//                modal shows them as a gallery (the first one should be `image`)
 //   github       repository URL, or null
 //   isPrivate    true when the code can't be shown (optional)
 //   details      optional extra blocks for the case study modal:
@@ -32,6 +36,44 @@ export const projects = [
     image: supplierPortalImg,
     github: null,
     isPrivate: true,
+  },
+  {
+    id: "crime-forecasting",
+    title: {
+      en: "Crime Forecasting System",
+      es: "Sistema de pronóstico de criminalidad",
+    },
+    description: {
+      en: "System that takes the crime data for Alajuela published by the OIJ and uses several quantitative methods to generate crime forecasts.",
+      es: "Sistema que toma los datos de crímenes en Alajuela brindados por el OIJ y, mediante varios métodos, permite generar predicciones de crímenes.",
+    },
+    technologies: ["Django", "Python", "SQLite", "Chart.js", "Tailwind CSS"],
+    image: crimeHomeImg,
+    images: [crimeHomeImg, crimeForecastImg],
+    github: "https://github.com/Putchie09/crime-forecasting",
+    details: [
+      {
+        heading: { en: "Data pipeline", es: "Procesamiento de datos" },
+        text: {
+          en: "Full-stack web system to analyze and forecast crime in Alajuela, Costa Rica, using official OIJ data, with automated data cleaning, validation and monthly time-series generation.",
+          es: "Sistema web full-stack para analizar y pronosticar la criminalidad en Alajuela, Costa Rica, a partir de datos oficiales del OIJ, con limpieza y validación automáticas de datos y generación de series de tiempo mensuales.",
+        },
+      },
+      {
+        heading: { en: "Forecasting models", es: "Modelos de pronóstico" },
+        text: {
+          en: "Four quantitative models (linear trend, exponential smoothing with an optimized α, seasonal indices and multiplicative decomposition), with automatic best-model selection based on MAE, MSE, RMSE and accuracy metrics.",
+          es: "Cuatro modelos cuantitativos (tendencia lineal, suavizamiento exponencial con α optimizado, índices estacionales y descomposición multiplicativa), con selección automática del mejor modelo según MAE, MSE, RMSE y métricas de precisión.",
+        },
+      },
+      {
+        heading: { en: "Dashboards and reports", es: "Dashboards y reportes" },
+        text: {
+          en: "Interactive dashboards built with Chart.js, a filterable historical data explorer, and PDF/CSV report exports by canton and crime type.",
+          es: "Dashboards interactivos con Chart.js, un explorador de datos históricos con filtros y exportación de reportes en PDF/CSV por cantón y tipo de delito.",
+        },
+      },
+    ],
   },
   {
     id: "time-tracking-dashboard",

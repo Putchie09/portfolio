@@ -38,6 +38,11 @@ export const translations = {
       technologies: "Technologies",
       privateRepository: "Private repository",
       screenshotAlt: "Screenshot of {title}",
+      gallery: "Screenshots of {title}",
+      previousImage: "Previous screenshot",
+      nextImage: "Next screenshot",
+      goToImage: "Go to screenshot {number} of {total}",
+      imageCounter: "Screenshot {number} of {total}",
       viewOnGitHub: "View {title} on GitHub (opens in a new tab)",
     },
     techStack: {
@@ -97,6 +102,11 @@ export const translations = {
       technologies: "Tecnologías",
       privateRepository: "Repositorio privado",
       screenshotAlt: "Captura de pantalla de {title}",
+      gallery: "Capturas de pantalla de {title}",
+      previousImage: "Captura anterior",
+      nextImage: "Captura siguiente",
+      goToImage: "Ir a la captura {number} de {total}",
+      imageCounter: "Captura {number} de {total}",
       viewOnGitHub: "Ver {title} en GitHub (se abre en una pestaña nueva)",
     },
     techStack: {

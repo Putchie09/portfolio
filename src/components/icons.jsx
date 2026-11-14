@@ -38,6 +38,22 @@ export function CloseIcon() {
   );
 }
 
+export function ChevronLeftIcon() {
+  return (
+    <LineIcon size={22} strokeWidth={2.2}>
+      <polyline points="15 5 8 12 15 19" />
+    </LineIcon>
+  );
+}
+
+export function ChevronRightIcon() {
+  return (
+    <LineIcon size={22} strokeWidth={2.2}>
+      <polyline points="9 5 16 12 9 19" />
+    </LineIcon>
+  );
+}
+
 export function ArrowUpRightIcon() {
   return (
     <LineIcon size={18}>

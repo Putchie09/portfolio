@@ -9,8 +9,8 @@ export const profile = {
     es: "Desarrollador de Software",
   },
   tagline: {
-    en: "Focused on building reliable software.",
-    es: "Enfocado en construir software confiable.",
+    en: "Building solutions that solve real problems.",
+    es: "Construyendo soluciones a problemas reales.",
   },
   email: "joelputchie@gmail.com",
   links: {
